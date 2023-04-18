@@ -1,0 +1,17 @@
+# Default ignored files
+/shelf/
+
+/encodings.xml
+
+target/
+.settings/
+.project
+.classpath
+logs/
+bin/
+*.log
+*.bak
+*.~sql
+*.classs
+.idea/
+*.iml
