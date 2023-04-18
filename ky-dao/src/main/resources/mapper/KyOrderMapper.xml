@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ky.dao.mapper.KyOrderMapper">
+
+    <resultMap id="BaseResultMap" type="com.ky.dao.entity.KyOrderDO">
+            <id property="orderId" column="order_id" jdbcType="INTEGER"/>
+            <result property="status" column="status" jdbcType="TINYINT"/>
+            <result property="userId" column="user_id" jdbcType="INTEGER"/>
+            <result property="productId" column="product_id" jdbcType="INTEGER"/>
+            <result property="productName" column="product_name" jdbcType="VARCHAR"/>
+            <result property="amount" column="amount" jdbcType="INTEGER"/>
+            <result property="mount" column="mount" jdbcType="INTEGER"/>
+            <result property="length" column="length" jdbcType="INTEGER"/>
+            <result property="width" column="width" jdbcType="INTEGER"/>
+            <result property="area" column="area" jdbcType="INTEGER"/>
+            <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+            <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+            <result property="validated" column="validated" jdbcType="TINYINT"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        order_id,status,user_id,
+        product_id,product_name,amount,
+        mount,length,width,
+        area,create_time,update_time,
+        validated
+    </sql>
+</mapper>

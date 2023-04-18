@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.wz</groupId>
+    <artifactId>kaiyuan</artifactId>
+    <version>1.0</version>
+    <modules>
+        <module>ky-boot</module>
+        <module>ky-common</module>
+        <module>ky-dao</module>
+        <module>ky-core</module>
+        <module>ky-web</module>
+        <module>ky-dto</module>
+    </modules>
+    <packaging>pom</packaging>
+
+    <properties>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+        <jdk.target.version>1.8</jdk.target.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <!-- 插件版本 -->
+        <spring-boot-maven-plugin.version>2.3.7.RELEASE</spring-boot-maven-plugin.version>
+        <maven-assembly-plugin.version>3.3.0</maven-assembly-plugin.version>
+        <maven-deploy-plugin.version>2.8.2</maven-deploy-plugin.version>
+
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <!-- 模块依赖 -->
+            <dependency>
+                <groupId>org.wz</groupId>
+                <artifactId>ky-boot</artifactId>
+                <version>1.0</version>
+            </dependency>
+            <dependency>
+                <groupId>org.wz</groupId>
+                <artifactId>ky-web</artifactId>
+                <version>1.0</version>
+            </dependency>
+            <dependency>
+                <groupId>org.wz</groupId>
+                <artifactId>ky-core</artifactId>
+                <version>1.0</version>
+            </dependency>
+            <dependency>
+                <groupId>org.wz</groupId>
+                <artifactId>ky-dao</artifactId>
+                <version>1.0</version>
+            </dependency>
+            <dependency>
+                <groupId>org.wz</groupId>
+                <artifactId>ky-common</artifactId>
+                <version>1.0</version>
+            </dependency>
+            <dependency>
+                <groupId>org.wz</groupId>
+                <artifactId>ky-dto</artifactId>
+                <version>1.0</version>
+            </dependency>
+
+            <!-- 起步依赖 -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-web</artifactId>
+                <version>2.3.7.RELEASE</version>
+            </dependency>
+            <!-- 日志 -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-log4j2</artifactId>
+                <version>2.3.7.RELEASE</version>
+            </dependency>
+            <!-- mysql连接驱动 -->
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>5.1.40</version>
+            </dependency>
+            <!-- 数据库连接池 -->
+            <dependency>
+                <groupId>com.zaxxer</groupId>
+                <artifactId>HikariCP</artifactId>
+                <version>3.2.0</version>
+            </dependency>
+
+            <!-- lombok -->
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>1.18.24</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-boot-starter</artifactId>
+                <version>3.3.1</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>1.2.83</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+
+
+</project>
