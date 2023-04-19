@@ -32,6 +32,12 @@
 
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>2.3.7.RELEASE</version>
+                <scope>import</scope>
+            </dependency>
             <!-- 模块依赖 -->
             <dependency>
                 <groupId>org.wz</groupId>
@@ -70,10 +76,16 @@
                 <artifactId>spring-boot-starter-web</artifactId>
                 <version>2.3.7.RELEASE</version>
             </dependency>
-            <!-- 日志 -->
+            <!-- log4j2 -->
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-log4j2</artifactId>
+                <version>2.3.7.RELEASE</version>
+            </dependency>
+            <!-- spring-boot-test -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-test</artifactId>
                 <version>2.3.7.RELEASE</version>
             </dependency>
             <!-- mysql连接驱动 -->
@@ -88,24 +100,46 @@
                 <artifactId>HikariCP</artifactId>
                 <version>3.2.0</version>
             </dependency>
-
             <!-- lombok -->
             <dependency>
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
                 <version>1.18.24</version>
             </dependency>
-
+            <!-- mybatis-plus -->
             <dependency>
                 <groupId>com.baomidou</groupId>
                 <artifactId>mybatis-plus-boot-starter</artifactId>
                 <version>3.3.1</version>
             </dependency>
-
+            <!-- fastjson -->
             <dependency>
                 <groupId>com.alibaba</groupId>
                 <artifactId>fastjson</artifactId>
                 <version>1.2.83</version>
+            </dependency>
+            <!-- validation -->
+            <dependency>
+                <groupId>javax.validation</groupId>
+                <artifactId>validation-api</artifactId>
+                <version>1.1.0.Final</version>
+            </dependency>
+            <dependency>
+                <groupId>org.hibernate</groupId>
+                <artifactId>hibernate-validator</artifactId>
+                <version>5.4.1.Final</version>
+            </dependency>
+            <!-- spring-boot-redis -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-data-redis</artifactId>
+                <version>2.4.0</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-configuration-processor</artifactId>
+                <version>2.3.9.RELEASE</version>
+                <optional>true</optional>
             </dependency>
         </dependencies>
     </dependencyManagement>

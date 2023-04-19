@@ -22,5 +22,6 @@
             <groupId>org.wz</groupId>
             <artifactId>ky-dao</artifactId>
         </dependency>
+
     </dependencies>
 </project>

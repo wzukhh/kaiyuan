@@ -13,6 +13,8 @@ public enum KyEnum {
     WRONG(-1,"操作失败"),
     LOGIN_OK(0,"登录成功"),
     LOGIN_FAIL(-1,"登录失败"),
+    USER_NOT_EXIST(-1,"用户不存在！请联系超级管理员为该用户添加权限"),
+    PASSWORD_WRONG(-1,"用户不存在！请联系超级管理员为该用户添加权限"),
     ;
 
     private final int code;

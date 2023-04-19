@@ -1,9 +1,10 @@
 package com.ky.core.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.ky.common.dto.req.LoginDTO;
-import com.ky.common.res.Result;
+import com.ky.common.result.Result;
 import com.ky.dao.entity.KyAdminDO;
+import com.ky.dto.req.LoginDTO;
+import com.ky.dto.req.LogoutDTO;
 
 /**
 * @author weish
@@ -13,4 +14,6 @@ import com.ky.dao.entity.KyAdminDO;
 public interface KyAdminService extends IService<KyAdminDO> {
 
     Result<String> login(LoginDTO loginDTO);
+
+    Result<String> logout(LogoutDTO loginDTO);
 }

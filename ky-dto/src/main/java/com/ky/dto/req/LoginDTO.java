@@ -1,6 +1,9 @@
-package com.ky.common.dto.req;
+package com.ky.dto.req;
 
 
+
+import lombok.Data;
+import org.hibernate.validator.constraints.NotBlank;
 
 import java.io.Serializable;
 
@@ -12,10 +15,13 @@ import java.io.Serializable;
  * @author WSH
  * @date 2022-11-07 10:02:44
  */
+@Data
 public class LoginDTO implements Serializable {
     private static final long serialVersionUID = 1L;
 
+    @NotBlank(message = "用户名不能为空！")
     private String username;
 
+    @NotBlank(message = "密码不能为空！")
     private String password;
 }
