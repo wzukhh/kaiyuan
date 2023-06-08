@@ -3,6 +3,7 @@ package com.ky.common.result;
 import com.ky.common.constants.KyEnum;
 import lombok.Data;
 
+
 import java.io.Serializable;
 
 /**

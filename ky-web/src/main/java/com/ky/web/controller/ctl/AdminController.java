@@ -1,6 +1,7 @@
 package com.ky.web.controller.ctl;
 
 import com.alibaba.fastjson.JSON;
+import com.ky.common.annotation.Valid;
 import com.ky.common.constants.KyConstants;
 import com.ky.common.result.Result;
 import com.ky.core.service.KyAdminService;
@@ -16,7 +17,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
-import javax.validation.Valid;
 
 /**
  * <p>
