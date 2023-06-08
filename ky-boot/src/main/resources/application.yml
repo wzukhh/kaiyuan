@@ -3,6 +3,7 @@ server:
 spring:
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
+#    url: jdbc:mysql://127.0.0.1:3306/kaiyuan?useSSL=false&useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
     url: jdbc:mysql://127.0.0.1:3306/kaiyuan?useSSL=false&useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai&rewriteBatchedStatements=true
     username: root
     password: root
@@ -20,8 +21,4 @@ spring:
     password: root
 
 filter:
-  excludes:
-    uri: /login
-    uris:
-      - /login
-      - java
+  excludes: /admin/login,/admin/check

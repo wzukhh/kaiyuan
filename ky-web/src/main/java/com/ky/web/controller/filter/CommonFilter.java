@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
+import org.springframework.util.StringUtils;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -19,7 +20,7 @@ import java.io.IOException;
 
 /**
  * <p>
- *
+ * 请求过滤器，对每一个请求进行过滤，判断用户是否登录
  * <p>
  *
  * @author WSH
@@ -32,7 +33,7 @@ public class CommonFilter implements Filter {
     @Autowired
     private RedisTemplate<String,String> redisTemplate;
 
-    @Value("filter.excludes.uris")
+    @Value("${filter.excludes}")
     private String[] excludes;
 
     @Override
@@ -43,14 +44,20 @@ public class CommonFilter implements Filter {
         // 放行路径包含该请求uri，放行
         if (handleExcludeUri(uri)){
             filterChain.doFilter(request,response);
+            return;
         }
         String headerToken = request.getHeader(KyConstants.ACCESS_TOKEN);
         // 请求没有token，直接拒绝，说明没有登录
-        if (headerToken == null){
+        if (StringUtils.isEmpty(headerToken)){
             return;
         }
-
-
+        // 获取redis里边的token
+        String redisToken = redisTemplate.opsForValue().get(headerToken);
+        if (StringUtils.isEmpty(redisToken) || !redisToken.equals(headerToken)){
+            return;
+        }
+        log.info("request header accessToken: {} ; request uri: {} ; redis token: {}",headerToken,uri,redisToken);
+        filterChain.doFilter(servletRequest,servletResponse);
     }
 
     private boolean handleExcludeUri(String uri) {

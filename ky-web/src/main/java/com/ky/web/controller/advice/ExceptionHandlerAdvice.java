@@ -21,25 +21,28 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 public class ExceptionHandlerAdvice {
     @ExceptionHandler(BizException.class)
     public Result handlerNullException(BizException e) {
-        log.error("拦截到异常: {}",e.getMessage());
+        log.error(e.getMessage(),e);
         return Result.fail(e.getError_code(),e.getError_msg());
     }
 
     @ExceptionHandler(RuntimeException.class)
     public Result handlerNullException(RuntimeException e) {
-        log.error("拦截到异常: {}",e.getMessage());
+        log.error(e.getMessage(),e);
+        if (e instanceof BizException){
+            return Result.fail(((BizException) e).getError_code(),((BizException) e).getError_msg());
+        }
         return Result.fail();
     }
 
     @ExceptionHandler(Exception.class)
     public Result handlerException(Exception e) {
-        log.error("拦截到异常: {}",e.getMessage());
+        log.error(e.getMessage(),e);
         return Result.fail();
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public Result handlerException(MethodArgumentNotValidException e) {
-        log.error("拦截到异常: {}",e.getMessage());
-        return Result.fail(KyEnum.WRONG.getCode(),e.getBindingResult().getFieldError().getDefaultMessage());
+        log.error(e.getMessage(),e);
+        return Result.fail(KyEnum.FAIL.getCode(),e.getBindingResult().getFieldError().getDefaultMessage());
     }
 }

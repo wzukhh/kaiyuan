@@ -1,7 +1,8 @@
 package com.ky.dao.mapper;
 
-import com.ky.dao.entity.KyOrderDO;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.ky.dao.entity.KyOrderDO;
+import org.apache.ibatis.annotations.Mapper;
 
 /**
 * @author weish
@@ -9,6 +10,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 * @createDate 2023-04-13 15:13:25
 * @Entity com.ky.dao.entity.KyOrderDO
 */
+@Mapper
 public interface KyOrderMapper extends BaseMapper<KyOrderDO> {
 
 }

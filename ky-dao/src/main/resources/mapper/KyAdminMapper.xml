@@ -12,10 +12,10 @@
             <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
             <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
             <result property="usePassword" column="use_password" jdbcType="TINYINT"/>
-            <result property="validated" column="validated" jdbcType="TINYINT"/>
+            <result property="valid" column="valid" jdbcType="TINYINT"/>
     </resultMap>
 
     <sql id="Base_Column_List">
-        admin_id,admin_type,username,password,create_time,update_time,use_password,validated
+        admin_id,admin_type,username,password,create_time,update_time,use_password,valid
     </sql>
 </mapper>

@@ -11,34 +11,40 @@ import java.util.Date;
 
 /**
  * 
- * @TableName ky_admin
+ * @TableName ky_user
  */
-@TableName(value ="ky_admin")
+@TableName(value ="ky_user")
 @Data
-public class KyAdminDO implements Serializable {
+public class KyUserDO implements Serializable {
     /**
-     * 管理员ID
+     * 客户ID
      */
-    @TableId(value = "admin_id", type = IdType.AUTO)
-    private Integer adminId;
+    @TableId(value = "user_id", type = IdType.AUTO)
+    private Integer userId;
 
     /**
-     * 管理员类型，0:超级管理员，1:操作管理员，2:普通管理员
+     * 客户名称
      */
-    @TableField(value = "admin_type")
-    private Integer adminType;
+    @TableField(value = "user_name")
+    private String userName;
 
     /**
-     * 用户名
+     * 联系方式
      */
-    @TableField(value = "username")
-    private String username;
+    @TableField(value = "contact")
+    private String contact;
 
     /**
-     * 登录密码
+     * 联系方式类型，0:手机号，1:QQ号，2:邮箱
      */
-    @TableField(value = "password")
-    private String password;
+    @TableField(value = "contact_type")
+    private Integer contactType;
+
+    /**
+     * 客户地址
+     */
+    @TableField(value = "address")
+    private String address;
 
     /**
      * 创建时间
@@ -47,16 +53,10 @@ public class KyAdminDO implements Serializable {
     private Date createTime;
 
     /**
-     * 更新时间
+     * 修改时间
      */
     @TableField(value = "update_time")
     private Date updateTime;
-
-    /**
-     * 是否使用密码，0:使用，1:不使用
-     */
-    @TableField(value = "use_password")
-    private Integer usePassword;
 
     /**
      * 是否有效，0:有效，1:无效
@@ -78,14 +78,14 @@ public class KyAdminDO implements Serializable {
         if (getClass() != that.getClass()) {
             return false;
         }
-        KyAdminDO other = (KyAdminDO) that;
-        return (this.getAdminId() == null ? other.getAdminId() == null : this.getAdminId().equals(other.getAdminId()))
-            && (this.getAdminType() == null ? other.getAdminType() == null : this.getAdminType().equals(other.getAdminType()))
-            && (this.getUsername() == null ? other.getUsername() == null : this.getUsername().equals(other.getUsername()))
-            && (this.getPassword() == null ? other.getPassword() == null : this.getPassword().equals(other.getPassword()))
+        KyUserDO other = (KyUserDO) that;
+        return (this.getUserId() == null ? other.getUserId() == null : this.getUserId().equals(other.getUserId()))
+            && (this.getUserName() == null ? other.getUserName() == null : this.getUserName().equals(other.getUserName()))
+            && (this.getContact() == null ? other.getContact() == null : this.getContact().equals(other.getContact()))
+            && (this.getContactType() == null ? other.getContactType() == null : this.getContactType().equals(other.getContactType()))
+            && (this.getAddress() == null ? other.getAddress() == null : this.getAddress().equals(other.getAddress()))
             && (this.getCreateTime() == null ? other.getCreateTime() == null : this.getCreateTime().equals(other.getCreateTime()))
             && (this.getUpdateTime() == null ? other.getUpdateTime() == null : this.getUpdateTime().equals(other.getUpdateTime()))
-            && (this.getUsePassword() == null ? other.getUsePassword() == null : this.getUsePassword().equals(other.getUsePassword()))
             && (this.getValid() == null ? other.getValid() == null : this.getValid().equals(other.getValid()));
     }
 
@@ -93,13 +93,13 @@ public class KyAdminDO implements Serializable {
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = prime * result + ((getAdminId() == null) ? 0 : getAdminId().hashCode());
-        result = prime * result + ((getAdminType() == null) ? 0 : getAdminType().hashCode());
-        result = prime * result + ((getUsername() == null) ? 0 : getUsername().hashCode());
-        result = prime * result + ((getPassword() == null) ? 0 : getPassword().hashCode());
+        result = prime * result + ((getUserId() == null) ? 0 : getUserId().hashCode());
+        result = prime * result + ((getUserName() == null) ? 0 : getUserName().hashCode());
+        result = prime * result + ((getContact() == null) ? 0 : getContact().hashCode());
+        result = prime * result + ((getContactType() == null) ? 0 : getContactType().hashCode());
+        result = prime * result + ((getAddress() == null) ? 0 : getAddress().hashCode());
         result = prime * result + ((getCreateTime() == null) ? 0 : getCreateTime().hashCode());
         result = prime * result + ((getUpdateTime() == null) ? 0 : getUpdateTime().hashCode());
-        result = prime * result + ((getUsePassword() == null) ? 0 : getUsePassword().hashCode());
         result = prime * result + ((getValid() == null) ? 0 : getValid().hashCode());
         return result;
     }
@@ -110,13 +110,13 @@ public class KyAdminDO implements Serializable {
         sb.append(getClass().getSimpleName());
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
-        sb.append(", adminId=").append(adminId);
-        sb.append(", adminType=").append(adminType);
-        sb.append(", username=").append(username);
-        sb.append(", password=").append(password);
+        sb.append(", userId=").append(userId);
+        sb.append(", userName=").append(userName);
+        sb.append(", contact=").append(contact);
+        sb.append(", contactType=").append(contactType);
+        sb.append(", address=").append(address);
         sb.append(", createTime=").append(createTime);
         sb.append(", updateTime=").append(updateTime);
-        sb.append(", usePassword=").append(usePassword);
         sb.append(", valid=").append(valid);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");

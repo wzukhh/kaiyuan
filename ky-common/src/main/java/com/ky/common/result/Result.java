@@ -15,17 +15,17 @@ import java.io.Serializable;
  */
 @Data
 public class Result<T> implements Serializable {
-    private int code;
+    private String code;
     private String msg;
     private T data;
 
-    public Result(int code, String msg, T data){
+    public Result(String code, String msg, T data){
         this.code = code;
         this.msg = msg;
         this.data = data;
     }
 
-    public Result(int code, String msg){
+    public Result(String code, String msg){
         this.code = code;
         this.msg = msg;
     }
@@ -35,12 +35,12 @@ public class Result<T> implements Serializable {
         this.msg = kyEnum.getMsg();
     }
 
-    public static <T> Result<T> ok(int code, String msg, T data){
+    public static <T> Result<T> ok(String code, String msg, T data){
         return new Result<T>(code,msg,data);
     }
 
 
-    public static <T> Result<T> ok(int code, String msg){
+    public static <T> Result<T> ok(String code, String msg){
         return new Result<T>(code,msg);
     }
 
@@ -55,11 +55,11 @@ public class Result<T> implements Serializable {
         return new Result<T>(KyEnum.SUCCESS);
     }
 
-    public static <T> Result<T> fail(int code, String msg, T data){
+    public static <T> Result<T> fail(String code, String msg, T data){
         return new Result<T>(code,msg,data);
     }
 
-    public static <T> Result<T> fail(int code, String msg){
+    public static <T> Result<T> fail(String code, String msg){
         return new Result<T>(code,msg);
     }
 
@@ -72,6 +72,6 @@ public class Result<T> implements Serializable {
     }
 
     public static <T> Result<T> fail(){
-        return new Result<T>(KyEnum.WRONG);
+        return new Result<T>(KyEnum.FAIL);
     }
 }

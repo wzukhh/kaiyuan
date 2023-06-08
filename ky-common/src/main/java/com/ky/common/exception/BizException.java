@@ -13,11 +13,11 @@ import lombok.Getter;
  */
 public class BizException extends RuntimeException{
     @Getter
-    private int error_code;
+    private String error_code;
     @Getter
     private String error_msg;
 
-    public BizException(int error_code, String error_msg){
+    public BizException(String error_code, String error_msg){
         super(error_msg);
         this.error_code = error_code;
         this.error_msg = error_msg;

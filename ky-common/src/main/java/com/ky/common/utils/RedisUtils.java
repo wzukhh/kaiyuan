@@ -3,6 +3,7 @@ package com.ky.common.utils;
 import com.ky.common.constants.KyConstants;
 import org.springframework.data.redis.core.RedisTemplate;
 
+import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -16,14 +17,20 @@ import java.util.concurrent.TimeUnit;
 public class RedisUtils {
     /**
      * redis中存入token,并设置过期时间, token值为key + 过期时间
-     * @param key   key
-     * @param ExpirationTime    存入时的系统时间毫秒值 + 自定义过期时间
+     * @param prefix   token前缀
+     * @param expirationTime   自定义过期时间
+     * @param timeUnit    时间单位
      * @param redisTemplate     redisTemplate
      * @return   生成的token
      */
-    public static String setToken(String key, Long ExpirationTime, RedisTemplate<String, String> redisTemplate) {
-        String token = key + "&&" + ExpirationTime;
-        redisTemplate.opsForValue().set(token, KyConstants.EXIST, ExpirationTime, TimeUnit.MILLISECONDS);
+    public static String setToken(String prefix,Long expirationTime, TimeUnit timeUnit , RedisTemplate<String, String> redisTemplate) {
+        //使用前缀 + 32位UUID 转大写作为token的key和value
+        String token = prefix.toUpperCase() + UUID.randomUUID().toString().replaceAll("-","").toUpperCase();
+        try {
+            redisTemplate.opsForValue().set(token, token, expirationTime, timeUnit);
+        } catch (Exception e) {
+            token = KyConstants.FAIL;
+        }
         return token;
     }
 

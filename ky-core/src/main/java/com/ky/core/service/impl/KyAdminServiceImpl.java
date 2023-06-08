@@ -16,6 +16,7 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.Objects;
+import java.util.concurrent.TimeUnit;
 
 /**
 * @author weish
@@ -37,7 +38,7 @@ public class KyAdminServiceImpl extends ServiceImpl<KyAdminMapper, KyAdminDO> im
     @Override
     public Result<String> login(LoginDTO loginDTO) {
         String username = loginDTO.getUsername();
-        KyAdminDO kyAdminDO = kyAdminMapper.selectOne(new LambdaQueryWrapper<KyAdminDO>().eq(KyAdminDO::getUsername, username).eq(KyAdminDO::getValidated, KyConstants.NOT_DELETED));
+        KyAdminDO kyAdminDO = kyAdminMapper.selectOne(new LambdaQueryWrapper<KyAdminDO>().eq(KyAdminDO::getUsername, username).eq(KyAdminDO::getValid, KyConstants.VALID));
         // 用户不存在
         if (Objects.isNull(kyAdminDO)){
             return  Result.fail(KyEnum.USER_NOT_EXIST);
@@ -47,8 +48,12 @@ public class KyAdminServiceImpl extends ServiceImpl<KyAdminMapper, KyAdminDO> im
             return  Result.fail(KyEnum.PASSWORD_WRONG);
         }
         // 登录成功，签发token，存入redis，并返回给前端，前端拿到之后在后续的请求时，把token添加到请求头上
-        String accessToken = RedisUtils.setToken(username,System.currentTimeMillis() + KyConstants.THIRTY_MINUTES_MILLISECONDS,redisTemplate);
-        return Result.ok(KyEnum.LOGIN_OK,accessToken);
+        String accessToken = RedisUtils.setToken(username,KyConstants.ONE, TimeUnit.DAYS,redisTemplate);
+        if (KyConstants.FAIL.equals(accessToken)){
+            // token设置失败，返回登录失败，不显示具体信息
+            return Result.fail(KyEnum.LOGIN_FAIL);
+        }
+        return Result.ok(KyEnum.LOGIN_SUCCESS,accessToken);
     }
 
     /**

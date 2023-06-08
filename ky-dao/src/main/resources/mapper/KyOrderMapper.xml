@@ -17,7 +17,7 @@
             <result property="area" column="area" jdbcType="INTEGER"/>
             <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
             <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
-            <result property="validated" column="validated" jdbcType="TINYINT"/>
+            <result property="valid" column="valid" jdbcType="TINYINT"/>
     </resultMap>
 
     <sql id="Base_Column_List">
@@ -25,6 +25,6 @@
         product_id,product_name,amount,
         mount,length,width,
         area,create_time,update_time,
-        validated
+        valid
     </sql>
 </mapper>
